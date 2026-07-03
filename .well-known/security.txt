@@ -1,0 +1,8 @@
+Contact: mailto:arjunc96@gmail.com
+Contact: https://linkedin.com/in/arjun-bahera1337
+Expires: 2027-12-31T23:59:59Z
+Preferred-Languages: en
+Canonical: https://arjunbahera.com/.well-known/security.txt
+Policy: https://arjunbahera.com/security-policy
+Encryption: https://arjunbahera.com/pgp-key.txt
+Acknowledgments: https://arjunbahera.com/hall-of-fame
