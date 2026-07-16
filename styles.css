@@ -1433,3 +1433,216 @@ code {
   background: var(--color-accent);
   box-shadow: 0 0 20px rgba(212, 168, 83, 0.25);
 }
+
+
+/* ==============================
+   R&D LAB — AI SMART-CONTRACT AUDITOR
+   ============================== */
+.rnd-lab {
+  padding: var(--section-pad) 0;
+  background: var(--color-bg-alt);
+}
+
+.rnd-lab .eyebrow-tag { color: var(--color-accent-plum); }
+
+.lab-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  transition: all var(--dur-normal) var(--ease-out);
+}
+.lab-card:hover {
+  border-color: var(--color-accent-plum);
+  box-shadow: 0 8px 32px rgba(155, 142, 196, 0.06);
+}
+
+.lab-classification {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 500;
+  color: var(--color-accent-plum);
+  letter-spacing: 0.1em;
+  padding: 12px 1.75rem;
+  background: var(--color-plum-dim);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.lab-body { padding: clamp(1.25rem, 4vw, 2rem); }
+
+.lab-lead p {
+  font-size: 1rem;
+  color: var(--color-text-dim);
+  line-height: var(--lh-body);
+  margin-bottom: 0;
+}
+.lab-highlight { color: var(--color-accent-plum); font-weight: 500; }
+.lab-lead strong { color: var(--color-text); font-weight: 500; }
+
+/* --- Pipeline diagram --- */
+.lab-pipeline {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 0.5rem;
+  margin: 2rem 0;
+}
+
+.pipe-node {
+  position: relative;
+  flex: 1 1 140px;
+  min-width: 140px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 0.875rem 0.875rem 1rem;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              transform var(--dur-fast) var(--ease-out);
+}
+.pipe-node:hover {
+  border-color: var(--color-accent-plum);
+  transform: translateY(-2px);
+}
+.pipe-node-ai {
+  border-color: rgba(155, 142, 196, 0.35);
+  background: linear-gradient(180deg, var(--color-plum-dim), var(--color-bg));
+}
+
+.pipe-index {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--color-text-muted);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.375rem;
+}
+.pipe-name {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--color-white);
+  margin-bottom: 0.25rem;
+}
+.pipe-desc {
+  display: block;
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  line-height: 1.4;
+}
+.pipe-tag {
+  position: absolute;
+  top: 0.75rem;
+  right: 0.75rem;
+  font-family: var(--font-mono);
+  font-size: 0.5rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--color-accent-plum);
+  border: 1px solid rgba(155, 142, 196, 0.4);
+  border-radius: 3px;
+  padding: 1px 4px;
+}
+.pipe-arrow {
+  align-self: center;
+  color: var(--color-text-muted);
+  font-size: 1rem;
+  flex: 0 0 auto;
+}
+
+/* --- Design decisions --- */
+.lab-decisions {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+.lab-decision {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-left: 2px solid var(--color-accent-plum);
+  border-radius: var(--radius-sm);
+  padding: 1rem 1.125rem;
+}
+.lab-decision h4 {
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-white);
+  margin-bottom: 0.375rem;
+}
+.lab-decision p {
+  font-size: 0.8125rem;
+  color: var(--color-text-dim);
+  line-height: 1.5;
+  margin-bottom: 0;
+}
+.lab-decision code {
+  font-size: 0.75rem;
+  background: var(--color-plum-dim);
+  color: var(--color-accent-plum);
+}
+
+/* --- Sample output --- */
+.lab-output {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  overflow: hidden;
+  margin-bottom: 1.75rem;
+}
+.lab-output-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.625rem 1rem;
+  background: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+.lab-output-label,
+.lab-output-fmt {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.08em;
+}
+.lab-output-label { color: var(--color-text-dim); text-transform: uppercase; }
+.lab-output-fmt { color: var(--color-accent-plum); }
+.lab-output-body {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  background: var(--color-bg);
+  overflow-x: auto;
+}
+.lab-output-body code {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: var(--lh-mono);
+  color: var(--color-text);
+  background: none;
+  padding: 0;
+  white-space: pre;
+}
+
+/* --- Tech chips --- */
+.lab-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.lab-tech-chip {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-text-dim);
+  background: var(--color-plum-dim);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 4px 10px;
+  letter-spacing: 0.03em;
+}
+
+.lab-card.reveal { transition-delay: 0ms; }
+
+@media (max-width: 640px) {
+  .lab-decisions { grid-template-columns: 1fr; }
+  .pipe-arrow { transform: rotate(90deg); width: 100%; text-align: center; }
+  .pipe-node { flex-basis: 100%; }
+}

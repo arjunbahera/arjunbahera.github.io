@@ -138,6 +138,7 @@
         <li><a href="#what-i-do">Expertise</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#rnd-lab">R&amp;D</a></li>
         <li><a href="#case-studies">Cases</a></li>
         <li><a href="#research">Research</a></li>
         <li><a href="blog/">Blog</a></li>
@@ -633,6 +634,122 @@
             </div>
           </div>
         </div>
+
+      </div>
+    </section>
+
+
+    <!-- ==============================
+    SECTION 6.5: R&D LAB — AI SMART-CONTRACT AUDITOR
+    ============================== -->
+    <section class="rnd-lab" id="rnd-lab" aria-labelledby="rnd-heading">
+      <div class="section-inner">
+
+        <h2 id="rnd-heading" class="section-eyebrow">
+          <span class="eyebrow-tag">&lt;rnd_lab&gt;</span>
+        </h2>
+
+        <p class="section-subtitle">Tools I build when a manual process should be an automated one. Below: an agentic pipeline that audits code across languages without hallucinating findings.</p>
+
+        <article class="lab-card">
+
+          <div class="lab-classification">R&amp;D BUILD 01 // AGENTIC SMART-CONTRACT AUDITOR</div>
+
+          <div class="lab-body">
+
+            <div class="lab-lead">
+              <p>An <strong>agentic security workflow</strong> that reviews Solidity smart contracts for reentrancy and broken access control. The core design decision: <span class="lab-highlight">separate fact extraction from reasoning</span>. One LLM pass extracts only literal, structured facts from the code; a second pass applies deterministic security rules to those facts. The reasoning model never sees raw code, so it cannot invent vulnerabilities that aren't grounded in extracted evidence.</p>
+            </div>
+
+            <!-- Pipeline diagram (pure CSS, echoes the n8n canvas) -->
+            <div class="lab-pipeline" role="img" aria-label="Pipeline: Ingest, Clean, Extract Facts, De-duplicate, Reason, Classify">
+              <div class="pipe-node">
+                <span class="pipe-index">01</span>
+                <span class="pipe-name">Ingest</span>
+                <span class="pipe-desc">Contract + checklist + model from source</span>
+              </div>
+              <span class="pipe-arrow" aria-hidden="true">&rarr;</span>
+              <div class="pipe-node">
+                <span class="pipe-index">02</span>
+                <span class="pipe-name">Clean</span>
+                <span class="pipe-desc">Strip imports &amp; comments for token efficiency</span>
+              </div>
+              <span class="pipe-arrow" aria-hidden="true">&rarr;</span>
+              <div class="pipe-node pipe-node-ai">
+                <span class="pipe-index">03</span>
+                <span class="pipe-name">Extract Facts</span>
+                <span class="pipe-desc">LLM — facts only, zero analysis</span>
+                <span class="pipe-tag">AI</span>
+              </div>
+              <span class="pipe-arrow" aria-hidden="true">&rarr;</span>
+              <div class="pipe-node">
+                <span class="pipe-index">04</span>
+                <span class="pipe-name">De-Dup</span>
+                <span class="pipe-desc">Collapse duplicate function facts</span>
+              </div>
+              <span class="pipe-arrow" aria-hidden="true">&rarr;</span>
+              <div class="pipe-node pipe-node-ai">
+                <span class="pipe-index">05</span>
+                <span class="pipe-name">Reason</span>
+                <span class="pipe-desc">LLM as deterministic rule engine</span>
+                <span class="pipe-tag">AI</span>
+              </div>
+              <span class="pipe-arrow" aria-hidden="true">&rarr;</span>
+              <div class="pipe-node">
+                <span class="pipe-index">06</span>
+                <span class="pipe-name">Classify</span>
+                <span class="pipe-desc">Map each finding to a checklist ID</span>
+              </div>
+            </div>
+
+            <!-- Design decisions -->
+            <div class="lab-decisions">
+              <div class="lab-decision">
+                <h4>Fact / reason separation</h4>
+                <p>The extractor is prompted to never analyze, infer, or speculate — it returns booleans like <code>externalCallBeforeStateUpdate</code>. Reasoning happens only on that structured evidence.</p>
+              </div>
+              <div class="lab-decision">
+                <h4>Deterministic rule engine</h4>
+                <p>Findings fire only on explicit conditions: reentrancy when an external call precedes a state update; access-control when critical state is written with no caller restriction.</p>
+              </div>
+              <div class="lab-decision">
+                <h4>Token-aware pre-processing</h4>
+                <p>A cleaning pass removes imports, comments, and blank lines before any model call, capping payload size to keep long contracts inside the context window and cost down.</p>
+              </div>
+              <div class="lab-decision">
+                <h4>Checklist grounding</h4>
+                <p>Every finding is matched back to a numbered audit checklist entry, so output maps to an existing methodology rather than free-form model prose.</p>
+              </div>
+            </div>
+
+            <!-- Sample output -->
+            <div class="lab-output">
+              <div class="lab-output-header">
+                <span class="lab-output-label">Sample finding // machine output</span>
+                <span class="lab-output-fmt">application/json</span>
+              </div>
+              <pre class="lab-output-body"><code>{
+  "type": "REENTRANCY",
+  "function": "withdraw",
+  "severity": "high",
+  "reason": "External .call sends ETH before the balance
+             mapping is zeroed, allowing a recursive re-entry
+             to drain the contract.",
+  "checklist_id": 14
+}</code></pre>
+            </div>
+
+            <div class="lab-tech">
+              <span class="lab-tech-chip">n8n</span>
+              <span class="lab-tech-chip">OpenRouter</span>
+              <span class="lab-tech-chip">DeepSeek / Claude</span>
+              <span class="lab-tech-chip">Java · NodeJS · PHP · Python · Solidity &amp; others</span>
+              <span class="lab-tech-chip">Google Sheets I/O</span>
+              <span class="lab-tech-chip">JSON rule engine</span>
+            </div>
+
+          </div>
+        </article>
 
       </div>
     </section>

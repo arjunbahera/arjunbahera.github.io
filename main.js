@@ -148,7 +148,7 @@
   // --- Scroll reveal ---
   function initScrollReveal() {
     const revealTargets = document.querySelectorAll(
-      '.service-card, .case-card, .research-block, .how-item, .cred-stat, .skills-block, .tl-card'
+      '.service-card, .case-card, .lab-card, .research-block, .how-item, .cred-stat, .skills-block, .tl-card'
     );
 
     if (!revealTargets.length) return;
