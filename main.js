@@ -242,6 +242,9 @@
     var btn = document.getElementById('warn-continue');
     if (!overlay || !btn) return;
 
+    // Reveal the dialog for human visitors (crawlers without JS see past it)
+    overlay.classList.remove('hidden');
+
     btn.addEventListener('click', function () {
       overlay.classList.add('hidden');
     });
